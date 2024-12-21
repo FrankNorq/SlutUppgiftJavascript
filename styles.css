@@ -5,15 +5,8 @@ body {
     background-color: rgb(8, 8, 8);
 }
 
-/* header {
-    background-color: rgb(15, 15, 15);
-    color: beige;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-} */
 
+/* Header  */
 .menu {
     display: flex;
     width: 100%; 
@@ -53,6 +46,7 @@ nav ul {
 .logo {
     width: 350px;
     height: 200px;
+    border-radius: 45%
 }
 
 li {
@@ -65,9 +59,10 @@ li {
     height: 200px;
     display: flex;
     align-items: center;
+    border-radius: 30%
     
 }
-
+/* Main  */
 .search-container {
     display: flex;
     justify-content: center;
@@ -90,3 +85,36 @@ li {
 .search-button:hover {
     background-color: #350236; 
 }
+
+
+
+
+/* foooter  */
+footer {
+    background-color:rgb(29, 1, 19);
+display: grid;
+grid-template-columns: repeat(8, 1fr);
+}
+ .contact-container {
+    grid-column:2/3 ;
+    color: white;
+    text-align: center;
+ }
+
+ .ourVision {
+    grid-column:4/6 ;
+    color: white;
+    text-align: center;
+ }
+
+ .footerBrand {
+    grid-column:6/9 ;
+    color: white;
+    text-align: center;
+
+ }
+ footer p {
+    padding: 10px;
+    letter-spacing: 2px;
+
+ }
