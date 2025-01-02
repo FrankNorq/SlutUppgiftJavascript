@@ -85,6 +85,22 @@ li {
 .search-button:hover {
     background-color: #350236; 
 }
+/* element jag skapar  */
+.boxNextWatch {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+}
+
+.boxNextWatch div {
+    width: 200px; 
+    text-align: center; 
+}
+
+.boxNextWatch img {
+    width: 100%; 
+    height: auto; 
+}
 
 
 
