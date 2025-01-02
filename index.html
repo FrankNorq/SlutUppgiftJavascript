@@ -36,26 +36,36 @@
             </div>
             <div id="genreButtons">
                 <div id="genreButtons">
-                    <button id="actionButton">Action</button>
-                    <button id="adventureButton">Adventure</button>
-                    <button id="animationButton">Animation</button>
-                    <button id="comedyButton">Comedy</button>
-                    <button id="crimeButton">Crime</button>
-                    <button id="documentaryButton">Documentary</button>
-                    <button id="dramaButton">Drama</button>
-                    <button id="horrorButton">Horror</button>
-                    <button id="musicButton">Music</button>
-                    <button id="mysteryButton">Mystery</button>
-                    <button id="romanceButton">Romance</button>
-                    <button id="sciFiButton">Science Fiction</button>
-                    <button id="tvMovieButton">TV Movie</button>
-                    <button id="thrillerButton">Thriller</button>
-                    <button id="warButton">War</button>
-                    <button id="westernButton">Western</button>
+                    <button id="actionButton" data-genre="action">Action</button>
+                    <button id="adventureButton" data-genre="adventure">Adventure</button>
+                    <button id="animationButton" data-genre="animation">Animation</button>
+                    <button id="comedyButton" data-genre="comedy">Comedy</button>
+                    <button id="crimeButton" data-genre="crime">Crime</button>
+                    <button id="documentaryButton" data-genre="documentary">Documentary</button>
+                    <button id="dramaButton" data-genre="drama">Drama</button>
+                    <button id="horrorButton" data-genre="horror">Horror</button>
+                    <button id="musicButton" data-genre="music">Music</button>
+                    <button id="mysteryButton" data-genre="mystery">Mystery</button>
+                    <button id="romanceButton" data-genre="romance">Romance</button>
+                    <button id="sciFiButton" data-genre="sciFi">Science Fiction</button>
+                    <button id="tvMovieButton" data-genre="tvMovie">TV Movie</button>
+                    <button id="thrillerButton" data-genre="thriller">Thriller</button>
+                    <button id="warButton" data-genre="war">War</button>
+                    <button id="westernButton" data-genre="western">Western</button>
                 </div>
             </div>
             <div class="boxNextWatch">
                 
+            </div>
+            <div id="movieModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalOverview"></p>
+                    <p>Release Date: <span id="modalReleaseDate"></span></p>
+                    <p>Rating: <span id="modalRating"></span></p>
+                    <p>Popularity: <span id="modalPopularity"></span></p>
+                </div>
             </div>
 
         </section>

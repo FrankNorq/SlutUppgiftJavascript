@@ -1,20 +1,9 @@
 const nextWatchBox = document.querySelector(".boxNextWatch");
-const actionButton = document.getElementById('actionButton');
-const adventureButton = document.getElementById('adventureButton');
-const animationButton = document.getElementById('animationButton');
-const comedyButton = document.getElementById('comedyButton');
-const crimeButton = document.getElementById('crimeButton');
-const documentaryButton = document.getElementById('documentaryButton');
-const dramaButton = document.getElementById('dramaButton');
-const horrorButton = document.getElementById('horrorButton');
-const musicButton = document.getElementById('musicButton');
-const mysteryButton = document.getElementById('mysteryButton');
-const romanceButton = document.getElementById('romanceButton');
-const sciFiButton = document.getElementById('sciFiButton');
-const tvMovieButton = document.getElementById('tvMovieButton');
-const thrillerButton = document.getElementById('thrillerButton');
-const warButton = document.getElementById('warButton');
-const westernButton = document.getElementById('westernButton');
+const genreButtons = document.querySelectorAll('#genreButtons button');
+const searchInput = document.querySelector('.searchInput');
+const searchButton = document.querySelector('.searchButton');
+const modal = document.getElementById('movieModal');
+const closeButton = document.querySelector('.close-button');
 const apiKey = '949ceccc803d4d64aa682d6ef42b2b36';
 const genreMap = {
     action: 28,
@@ -34,6 +23,7 @@ const genreMap = {
     war: 10752,
     western: 37
 };
+let allMovies = [];
 
 async function fetchMovies(genre) {
     const genreId = genreMap[genre]; 
@@ -51,6 +41,7 @@ async function fetchMovies(genre) {
         }
         
         const data = await response.json();
+        allMovies = data.results; 
         console.log(data);
         return data.results; 
         
@@ -58,129 +49,70 @@ async function fetchMovies(genre) {
         console.error('Fetch error:', err);
     }
 }
+genreButtons.forEach(button => {
+    button.addEventListener("click", function () {
+        const genre = this.getAttribute('data-genre'); 
+        fetchMovies(genre)
+            .then((data) => {
+                createMovies(data);
+            });
+    });
+});
 
 function createMovies(data) {
-   
+    
     nextWatchBox.innerHTML = '';
-
+    
     data.forEach(movie => {
         const divBox = document.createElement("div");
-        // const titleId = document.createElement("h4");
         const imgId = document.createElement("img");
         const scoreId = document.createElement("p");
+        const viewMoreButton = document.createElement("button");
         
         
-        // titleId.textContent = movie.title; 
+        
+        viewMoreButton.innerText = "Read about the movie";
         imgId.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`; 
-        scoreId.textContent = `Rating: ${movie.vote_average}`; 
-
+        imgId.alt= `${movie.title}`;
+        scoreId.textContent = ` IMDB ${movie.vote_average.toFixed(1)}`; 
         
-        // divBox.appendChild(titleId);
+        
+        viewMoreButton.addEventListener('click', () => {
+            document.getElementById('modalTitle').textContent = movie.title;
+            document.getElementById('modalOverview').textContent = `${movie.overview}`;
+            document.getElementById('modalReleaseDate').textContent = movie.release_date;
+            document.getElementById('modalRating').textContent = ` IMDB ${movie.vote_average} `;
+            document.getElementById('modalPopularity').textContent = `Total views ${movie.popularity}`;
+        
+            modal.style.display = 'block'; 
+        });
+        
         divBox.appendChild(scoreId);
         divBox.appendChild(imgId);
+        divBox.appendChild(viewMoreButton);
         nextWatchBox.appendChild(divBox);
     });
 }
+closeButton.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+searchInput.addEventListener('input', function() {
+    const filterText = searchInput.value.toLowerCase(); 
+    const movieElements = nextWatchBox.children; 
 
-fetchMovies('action') 
-.then ((data)=>{
-    createMovies(data)
-})
+    Array.from(movieElements).forEach((movieElement, index) => {
+        const movieTitle = allMovies[index].title.toLowerCase(); 
+        if (movieTitle.includes(filterText)) {
+            movieElement.style.display = ''; 
+        } else {
+            movieElement.style.display = 'none'; 
+        }
+    });
+});
 
 
-actionButton.addEventListener("click", function () {
-    fetchMovies('action') 
-.then ((data)=>{
-    createMovies(data)
-})
-})
-adventureButton.addEventListener("click", function () {
-    fetchMovies('adventure') 
-.then ((data)=>{
-    createMovies(data)
-})
-})
-animationButton.addEventListener("click", function () {
-    fetchMovies('animation') 
-.then ((data)=>{
-    createMovies(data)
-})
-})
-comedyButton.addEventListener("click", function () {
-    fetchMovies('comedy') 
-.then ((data)=>{
-    createMovies(data)
-})
-})
-crimeButton.addEventListener("click", function () {
-    fetchMovies('crime') 
-.then ((data)=>{
-    createMovies(data)
-})
-})
-documentaryButton.addEventListener("click", function () {
-    fetchMovies('documentary') 
-.then ((data)=>{
-    createMovies(data)
-})
-})
-dramaButton.addEventListener("click", function () {
-    fetchMovies('drama') 
-.then ((data)=>{
-    createMovies(data)
-})
-})
-horrorButton.addEventListener("click", function () {
-    fetchMovies('horror') 
-.then ((data)=>{
-    createMovies(data)
-})
-})
-musicButton.addEventListener("click", function () {
-    fetchMovies('music') 
-.then ((data)=>{
-    createMovies(data)
-})
-})
-mysteryButton.addEventListener("click", function () {
-    fetchMovies('mystery') 
-.then ((data)=>{
-    createMovies(data)
-})
-})
-romanceButton.addEventListener("click", function () {
-    fetchMovies('romance') 
-.then ((data)=>{
-    createMovies(data)
-})
-})
-sciFiButton.addEventListener("click", function () {
-    fetchMovies('sciFi') 
-.then ((data)=>{
-    createMovies(data)
-})
-})
-thrillerButton.addEventListener("click", function () {
-    fetchMovies('thriller') 
-.then ((data)=>{
-    createMovies(data)
-})
-})
-westernButton.addEventListener("click", function () {
-    fetchMovies('western') 
-.then ((data)=>{
-    createMovies(data)
-})
-})
-tvMovieButton.addEventListener("click", function () {
-    fetchMovies('tvMovie') 
-.then ((data)=>{
-    createMovies(data)
-})
-})
-warButton.addEventListener("click", function () {
-    fetchMovies('war') 
-.then ((data)=>{
-    createMovies(data)
-})
-})
+
+
+window.onload = function() {
+    document.getElementById('actionButton').click();
+};
