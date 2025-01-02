@@ -124,9 +124,7 @@ li {
     width: 100%; 
     height: auto; 
 }
-.boxNextWatch h4 {
-    color: white;
-}
+
 .boxNextWatch p {
     color: white;
 }
@@ -175,9 +173,46 @@ footer {
 }
 
 .contact-container {
-    grid-column: 2 / 3;
+    grid-column: 1 / 4;
+    justify-self: center; 
     color: white;
     text-align: center;
+    padding: 20px; 
+    background-color: rgba(0, 0, 0, 0.7); 
+    width: 80%; 
+    max-width: 600px; 
+    margin: 20px auto; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
+}
+
+.contact-container h1 {
+    margin-bottom: 20px; 
+}
+
+.contact-container input,
+.contact-container textarea {
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+}
+.contact-container textarea {
+    height: 200px;
+}
+
+.contact-container button {
+    background-color: #28a745; 
+    color: white;
+    padding: 10px 15px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+
+.contact-container button:hover {
+    background-color: #218838; 
 }
 
 .ourVision {

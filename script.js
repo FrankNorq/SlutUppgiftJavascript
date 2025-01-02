@@ -1,4 +1,4 @@
-const nextWatchBox = document.querySelector(".boxNextWatch");
+const moviesBox = document.querySelector(".boxNextWatch");
 const genreButtons = document.querySelectorAll('#genreButtons button');
 const searchInput = document.querySelector('.searchInput');
 const searchButton = document.querySelector('.searchButton');
@@ -61,7 +61,7 @@ genreButtons.forEach(button => {
 
 function createMovies(data) {
     
-    nextWatchBox.innerHTML = '';
+    moviesBox.innerHTML = '';
     
     data.forEach(movie => {
         const divBox = document.createElement("div");
@@ -81,7 +81,7 @@ function createMovies(data) {
             document.getElementById('modalTitle').textContent = movie.title;
             document.getElementById('modalOverview').textContent = `${movie.overview}`;
             document.getElementById('modalReleaseDate').textContent = movie.release_date;
-            document.getElementById('modalRating').textContent = ` IMDB ${movie.vote_average} `;
+            document.getElementById('modalRating').textContent = ` IMDB ${movie.vote_average.toFixed(1)} `;
             document.getElementById('modalPopularity').textContent = `Total views ${movie.popularity}`;
         
             modal.style.display = 'block'; 
@@ -90,7 +90,7 @@ function createMovies(data) {
         divBox.appendChild(scoreId);
         divBox.appendChild(imgId);
         divBox.appendChild(viewMoreButton);
-        nextWatchBox.appendChild(divBox);
+        moviesBox.appendChild(divBox);
     });
 }
 closeButton.addEventListener('click', () => {
@@ -98,7 +98,7 @@ closeButton.addEventListener('click', () => {
 });
 searchInput.addEventListener('input', function() {
     const filterText = searchInput.value.toLowerCase(); 
-    const movieElements = nextWatchBox.children; 
+    const movieElements = moviesBox.children; 
 
     Array.from(movieElements).forEach((movieElement, index) => {
         const movieTitle = allMovies[index].title.toLowerCase(); 
