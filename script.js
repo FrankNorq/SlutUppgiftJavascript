@@ -103,13 +103,22 @@ function createMovies(data) {
             optionsBox.appendChild(watchLaterButton)
             
             insaneButton.addEventListener("click",function () {
-                
+                const savedMovies = JSON.parse(localStorage.getItem("insaneMovies")) || [];
+                savedMovies.push(movie);
+                localStorage.setItem('insaneMovies', JSON.stringify(savedMovies));
+                optionsBox.remove();
             })
             greatButton.addEventListener("click",function () {
-                
+                const savedMovies = JSON.parse(localStorage.getItem('greatMovies')) || [];
+                savedMovies.push(movie);
+                localStorage.setItem('greatMovies', JSON.stringify(savedMovies));
+                optionsBox.remove();
             })
             watchLaterButton.addEventListener("click",function () {
-                
+                const savedMovies = JSON.parse(localStorage.getItem('watchLaterMovies')) || [];
+                savedMovies.push(movie);
+                localStorage.setItem('watchLaterMovies', JSON.stringify(savedMovies));
+                optionsBox.remove();
             })
 
         })

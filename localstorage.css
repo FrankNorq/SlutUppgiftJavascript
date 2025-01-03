@@ -2,3 +2,40 @@
 #localStorageMovies {
     color: azure;
 }
+
+
+main {
+    display: grid;
+    justify-content: center;
+}
+.savedMovie {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+    justify-content: center
+}
+
+.insaneMovie div {
+    width: 300px; 
+    text-align: center; 
+
+}
+.greatmovie div {
+    width: 300px; 
+    text-align: center; 
+
+}
+.watchLater div {
+    width: 300px; 
+    text-align: center; 
+
+}
+
+.savedMovie img {
+    width: 100%; 
+    height: auto; 
+}
+
+.savedMovie p {
+    color: white;
+}
