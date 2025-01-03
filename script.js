@@ -4,6 +4,7 @@ const searchInput = document.querySelector('.searchInput');
 const searchButton = document.querySelector('.searchButton');
 const modal = document.getElementById('movieModal');
 const closeButton = document.querySelector('.close-button');
+const renderAllMovies = document.getElementById("renderAll");
 const apiKey = '949ceccc803d4d64aa682d6ef42b2b36';
 let allMovies = [];
 const genreMap = {
@@ -137,19 +138,37 @@ searchInput.addEventListener('input', function() {
     const filterText = searchInput.value.toLowerCase(); 
     const movieElements = moviesBox.children; 
 
-    Array.from(movieElements).forEach((movieElement, index) => {
-        const movieTitle = allMovies[index].title.toLowerCase(); 
-        if (movieTitle.includes(filterText)) {
+    Array.from(movieElements).forEach((movieElement) => {
+        // sortera på bildens alt tagg 
+        const imgElement = movieElement.querySelector('img'); 
+        const movieAltText = imgElement ? imgElement.alt.toLowerCase() : ''; 
+
+        if (movieAltText.includes(filterText)) {
             movieElement.style.display = ''; 
         } else {
             movieElement.style.display = 'none'; 
         }
     });
 });
+async function fetchAllMovies() {
+    const genrePromises = Object.keys(genreMap).map(genre => fetchMovies(genre));
 
+    try {
+        const results = await Promise.all(genrePromises);
+        const allMovies = results.flat();
 
+        // hade problem med att jag fick flera av samma, detta ser till att jag bara får upp et av varje
+        const uniqueMovies = Array.from(new Set(allMovies.map(movie => movie.id)))
+            .map(id => allMovies.find(movie => movie.id === id));
 
+        createMovies(uniqueMovies);
+    } catch (err) {
+        console.error('Error fetching all movies:', err);
+    }
+}
+
+renderAllMovies.addEventListener("click", fetchAllMovies);
 
 window.onload = function() {
-    document.getElementById('actionButton').click();
+    document.getElementById('renderAll').click();
 };
