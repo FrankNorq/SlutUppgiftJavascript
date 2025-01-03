@@ -5,6 +5,7 @@ const searchButton = document.querySelector('.searchButton');
 const modal = document.getElementById('movieModal');
 const closeButton = document.querySelector('.close-button');
 const apiKey = '949ceccc803d4d64aa682d6ef42b2b36';
+let allMovies = [];
 const genreMap = {
     action: 28,
     adventure: 12,
@@ -23,7 +24,6 @@ const genreMap = {
     war: 10752,
     western: 37
 };
-let allMovies = [];
 
 async function fetchMovies(genre) {
     const genreId = genreMap[genre]; 
