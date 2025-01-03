@@ -37,7 +37,7 @@ async function fetchMovies(genre) {
         const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genreId}`);
         
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
         
         const data = await response.json();
@@ -66,13 +66,18 @@ function handleErrorWithFetching(error) {
         case "500":
             console.error("Error: Internal server error (500)");
             break;
-        case "NetworkError":
+        case "503":
             console.error("Error: Network error, please check your connection");
+            break;
+        case "504":
+                console.error("Error: Gateway error, please check your gateway");
             break;
         default:
             console.error("Error: An unexpected error occurred", error);
             break;
     }
+    
+    
 }
 function createMovies(data) {
     
