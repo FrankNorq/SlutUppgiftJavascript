@@ -46,7 +46,7 @@ async function fetchMovies(genre) {
         return data.results; 
         
     } catch (err) {
-        console.error('Fetch error:', err);
+        handleErrorWithFetching(err);
     }
 }
 genreButtons.forEach(button => {
@@ -58,7 +58,22 @@ genreButtons.forEach(button => {
             });
     });
 });
-
+function handleErrorWithFetching(error) {
+    switch (error.message) {
+        case "404":
+            console.error("Error: Resource not found (404)");
+            break;
+        case "500":
+            console.error("Error: Internal server error (500)");
+            break;
+        case "NetworkError":
+            console.error("Error: Network error, please check your connection");
+            break;
+        default:
+            console.error("Error: An unexpected error occurred", error);
+            break;
+    }
+}
 function createMovies(data) {
     
     moviesBox.innerHTML = '';
