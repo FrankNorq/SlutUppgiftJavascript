@@ -4,7 +4,7 @@
         const watchLaterMovies = JSON.parse(localStorage.getItem('watchLaterMovies')) || [];
 
         const insaneMovieSection = document.querySelector('.insaneMovie');
-        const greatMovieSection = document.querySelector('.greatmovie');
+        const greatMovieSection = document.querySelector('.greatMovie');
         const watchLaterSection = document.querySelector('.watchLater');
         
 
@@ -16,6 +16,7 @@
 
             imgId.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`; 
             imgId.alt= `${movie.title}`;
+            favMovieBox.setAttribute("class","movieBox");
             deleteButton.innerText = "Delete from my toprated"
 
 
@@ -41,6 +42,7 @@
 
             imgId.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`; 
             imgId.alt= `${movie.title}`;
+            favMovieBox.setAttribute("class","movieBox");
             deleteButton.innerText = "Delete from my toprated"
 
 
@@ -65,6 +67,7 @@
 
             imgId.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`; 
             imgId.alt= `${movie.title}`;
+            favMovieBox.setAttribute("class","movieBox");
             deleteButton.innerText = "Delete from my nextwatch"
 
             deleteButton.addEventListener("click", function () {
