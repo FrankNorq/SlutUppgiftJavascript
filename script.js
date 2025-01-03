@@ -37,7 +37,7 @@ async function fetchMovies(genre) {
         const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genreId}`);
         
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
         
         const data = await response.json();
@@ -46,7 +46,7 @@ async function fetchMovies(genre) {
         return data.results; 
         
     } catch (err) {
-        console.error('Fetch error:', err);
+        handleErrorWithFetching(err);
     }
 }
 genreButtons.forEach(button => {
@@ -58,7 +58,27 @@ genreButtons.forEach(button => {
             });
     });
 });
-
+function handleErrorWithFetching(error) {
+    switch (error.message) {
+        case "404":
+            console.error("Error: Resource not found (404)");
+            break;
+        case "500":
+            console.error("Error: Internal server error (500)");
+            break;
+        case "503":
+            console.error("Error: Network error, please check your connection");
+            break;
+        case "504":
+                console.error("Error: Gateway error, please check your gateway");
+            break;
+        default:
+            console.error("Error: An unexpected error occurred", error);
+            break;
+    }
+    
+    
+}
 function createMovies(data) {
     
     moviesBox.innerHTML = '';
