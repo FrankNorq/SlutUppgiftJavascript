@@ -1,11 +1,11 @@
 const moviesBox = document.querySelector(".boxNextWatch");
-const genreButtons = document.querySelectorAll('#genreButtons button');
-const searchInput = document.querySelector('.searchInput');
-const searchButton = document.querySelector('.searchButton');
-const modal = document.getElementById('movieModal');
-const closeButton = document.querySelector('.close-button');
+const genreButtons = document.querySelectorAll("#genreButtons button");
+const searchInput = document.querySelector(".searchInput");
+const searchButton = document.querySelector(".searchButton");
+const modal = document.getElementById("movieModal");
+const closeButton = document.querySelector(".close-button");
 const renderAllMovies = document.getElementById("renderAll");
-const apiKey = '949ceccc803d4d64aa682d6ef42b2b36';
+const apiKey = "949ceccc803d4d64aa682d6ef42b2b36";
 let allMovies = [];
 const genreMap = {
     action: 28,
@@ -30,7 +30,7 @@ async function fetchMovies(genre) {
     const genreId = genreMap[genre]; 
     
     if (!genreId) {
-        console.error('Genre not found:', genre);
+        console.error("Genre not found:", genre);
         return; 
     }
     
@@ -50,15 +50,17 @@ async function fetchMovies(genre) {
         handleErrorWithFetching(err);
     }
 }
+
 genreButtons.forEach(button => {
     button.addEventListener("click", function () {
-        const genre = this.getAttribute('data-genre'); 
+        const genre = this.getAttribute("data-genre"); 
         fetchMovies(genre)
             .then((data) => {
                 createMovies(data);
             });
     });
 });
+
 function handleErrorWithFetching(error) {
     switch (error.message) {
         case "404":
@@ -71,18 +73,16 @@ function handleErrorWithFetching(error) {
             console.error("Error: Network error, please check your connection");
             break;
         case "504":
-                console.error("Error: Gateway error, please check your gateway");
+            console.error("Error: Gateway error, please check your gateway");
             break;
         default:
             console.error("Error: An unexpected error occurred", error);
             break;
     }
-    
-    
 }
+
 function createMovies(data) {
-    
-    moviesBox.innerHTML = '';
+    moviesBox.innerHTML = "";
     
     data.forEach(movie => {
         const divBox = document.createElement("div");
@@ -91,24 +91,23 @@ function createMovies(data) {
         const viewMoreButton = document.createElement("button");
         const localStorageButton = document.createElement("button");
         
-        
         localStorageButton.innerText = "Add to favorites";
         viewMoreButton.innerText = "Read about the movie";
         imgId.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`; 
-        imgId.alt= `${movie.title}`;
-        scoreId.textContent = ` IMDB ${movie.vote_average.toFixed(1)}`; 
+        imgId.alt = `${movie.title}`;
+        scoreId.textContent = `IMDB: ${movie.vote_average.toFixed(1)}`; 
         
+        viewMoreButton.addEventListener("click", () => {
+            document.getElementById("modalTitle").textContent = movie.title;
+            document.getElementById("modalOverview").textContent = `${movie.overview}`;
+            document.getElementById("modalReleaseDate").textContent = movie.release_date;
+            document.getElementById("modalRating").textContent = `IMDB: ${movie.vote_average.toFixed(1)}`;
+            document.getElementById("modalPopularity").textContent = `Total views: ${movie.popularity}`;
         
-        viewMoreButton.addEventListener('click', () => {
-            document.getElementById('modalTitle').textContent = movie.title;
-            document.getElementById('modalOverview').textContent = `${movie.overview}`;
-            document.getElementById('modalReleaseDate').textContent = movie.release_date;
-            document.getElementById('modalRating').textContent = ` IMDB ${movie.vote_average.toFixed(1)} `;
-            document.getElementById('modalPopularity').textContent = `Total views ${movie.popularity}`;
-        
-            modal.style.display = 'block'; 
+            modal.style.display = "block"; 
         });
-        localStorageButton.addEventListener("click",function () {
+
+        localStorageButton.addEventListener("click", function () {
             const optionsBox = document.createElement("div");
             const insaneButton = document.createElement("button");
             const greatButton = document.createElement("button");
@@ -117,32 +116,33 @@ function createMovies(data) {
             optionsBox.id = "optionBox";
             insaneButton.innerText = "Insane movie 9+";
             greatButton.innerText = "Great movie 8+";
-            watchLaterButton.innerText = "Watch later"
-            divBox.appendChild(optionsBox)
+            watchLaterButton.innerText = "Watch later";
+            divBox.appendChild(optionsBox);
             optionsBox.appendChild(insaneButton);
             optionsBox.appendChild(greatButton);
-            optionsBox.appendChild(watchLaterButton)
+            optionsBox.appendChild(watchLaterButton);
             
-            insaneButton.addEventListener("click",function () {
+            insaneButton.addEventListener("click", function () {
                 const savedMovies = JSON.parse(localStorage.getItem("insaneMovies")) || [];
                 savedMovies.push(movie);
-                localStorage.setItem('insaneMovies', JSON.stringify(savedMovies));
+                localStorage.setItem("insaneMovies", JSON.stringify(savedMovies));
                 optionsBox.remove();
-            })
-            greatButton.addEventListener("click",function () {
-                const savedMovies = JSON.parse(localStorage.getItem('greatMovies')) || [];
-                savedMovies.push(movie);
-                localStorage.setItem('greatMovies', JSON.stringify(savedMovies));
-                optionsBox.remove();
-            })
-            watchLaterButton.addEventListener("click",function () {
-                const savedMovies = JSON.parse(localStorage.getItem('watchLaterMovies')) || [];
-                savedMovies.push(movie);
-                localStorage.setItem('watchLaterMovies', JSON.stringify(savedMovies));
-                optionsBox.remove();
-            })
+            });
 
-        })
+            greatButton.addEventListener("click", function () {
+                const savedMovies = JSON.parse(localStorage.getItem("greatMovies")) || [];
+                savedMovies.push(movie);
+                localStorage.setItem("greatMovies", JSON.stringify(savedMovies));
+                optionsBox.remove();
+            });
+
+            watchLaterButton.addEventListener("click", function () {
+                const savedMovies = JSON.parse(localStorage.getItem("watchLaterMovies")) || [];
+                savedMovies.push(movie);
+                localStorage.setItem("watchLaterMovies", JSON.stringify(savedMovies));
+                optionsBox.remove();
+            });
+        });
         
         divBox.appendChild(scoreId);
         divBox.appendChild(imgId);
@@ -151,25 +151,27 @@ function createMovies(data) {
         moviesBox.appendChild(divBox);
     });
 }
-closeButton.addEventListener('click', () => {
-    modal.style.display = 'none';
+
+closeButton.addEventListener("click", () => {
+    modal.style.display = "none";
 });
-searchInput.addEventListener('input', function() {
+
+searchInput.addEventListener("input", function() {
     const filterText = searchInput.value.toLowerCase(); 
     const movieElements = moviesBox.children; 
 
     Array.from(movieElements).forEach((movieElement) => {
-        // sortera på bildens alt tagg 
-        const imgElement = movieElement.querySelector('img'); 
-        const movieAltText = imgElement ? imgElement.alt.toLowerCase() : ''; 
+        const imgElement = movieElement.querySelector("img"); 
+        const movieAltText = imgElement ? imgElement.alt.toLowerCase() : ""; 
 
         if (movieAltText.includes(filterText)) {
-            movieElement.style.display = ''; 
+            movieElement.style.display = ""; 
         } else {
-            movieElement.style.display = 'none'; 
+            movieElement.style.display = "none"; 
         }
     });
 });
+
 async function fetchAllMovies() {
     const genrePromises = Object.keys(genreMap).map(genre => fetchMovies(genre));
 
@@ -177,18 +179,17 @@ async function fetchAllMovies() {
         const results = await Promise.all(genrePromises);
         const allMovies = results.flat();
 
-        // hade problem med att jag fick flera av samma, detta ser till att jag bara får upp et av varje
         const uniqueMovies = Array.from(new Set(allMovies.map(movie => movie.id)))
             .map(id => allMovies.find(movie => movie.id === id));
 
         createMovies(uniqueMovies);
     } catch (err) {
-        console.error('Error fetching all movies:', err);
+        console.error("Error fetching all movies:", err);
     }
 }
 
 renderAllMovies.addEventListener("click", fetchAllMovies);
 
 window.onload = function() {
-    document.getElementById('renderAll').click();
+    document.getElementById("renderAll").click();
 };

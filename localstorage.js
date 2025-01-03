@@ -1,90 +1,76 @@
+const insaneMovies = JSON.parse(localStorage.getItem("insaneMovies")) || [];
+const greatMovies = JSON.parse(localStorage.getItem("greatMovies")) || [];
+const watchLaterMovies = JSON.parse(localStorage.getItem("watchLaterMovies")) || [];
 
-        const insaneMovies = JSON.parse(localStorage.getItem('insaneMovies')) || [];
-        const greatMovies = JSON.parse(localStorage.getItem('greatMovies')) || [];
-        const watchLaterMovies = JSON.parse(localStorage.getItem('watchLaterMovies')) || [];
+const insaneMovieSection = document.querySelector(".insaneMovie");
+const greatMovieSection = document.querySelector(".greatMovie");
+const watchLaterSection = document.querySelector(".watchLater");
 
-        const insaneMovieSection = document.querySelector('.insaneMovie');
-        const greatMovieSection = document.querySelector('.greatMovie');
-        const watchLaterSection = document.querySelector('.watchLater');
-        
+insaneMovies.forEach((movie, index) => {
+    const favMovieBox = document.createElement("div");
+    const imgId = document.createElement("img");
+    const deleteButton = document.createElement("button");
 
+    imgId.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`; 
+    imgId.alt = `${movie.title}`;
+    favMovieBox.setAttribute("class", "movieBox");
+    deleteButton.innerText = "Delete from my toprated";
 
-        insaneMovies.forEach((movie, index) => {
-            const favMovieBox = document.createElement("div");
-            const imgId = document.createElement("img");
-            const deleteButton = document.createElement("button");
+    deleteButton.addEventListener("click", function () {
+        const updatedInsaneMovies = JSON.parse(localStorage.getItem("insaneMovies")) || [];
+        updatedInsaneMovies.splice(index, 1); 
+        localStorage.setItem("insaneMovies", JSON.stringify(updatedInsaneMovies)); 
 
-            imgId.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`; 
-            imgId.alt= `${movie.title}`;
-            favMovieBox.setAttribute("class","movieBox");
-            deleteButton.innerText = "Delete from my toprated"
+        favMovieBox.remove(); 
+    });
 
+    insaneMovieSection.appendChild(favMovieBox);
+    favMovieBox.appendChild(imgId);
+    favMovieBox.appendChild(deleteButton);
+});
 
-            deleteButton.addEventListener("click", function () {
-                
-                const updatedInsaneMovies = JSON.parse(localStorage.getItem('insaneMovies')) || [];
-                updatedInsaneMovies.splice(index, 1); 
-                localStorage.setItem('updatedInsaneMovies', JSON.stringify(updatedInsaneMovies)); 
-        
-                favMovieBox.remove(); 
-        });
-           
-            insaneMovieSection.appendChild(favMovieBox)
-            favMovieBox.appendChild(imgId)
-            favMovieBox.appendChild(deleteButton)
-            
-        });
-        greatMovies.forEach((movie, index ) => {
-            const favMovieBox = document.createElement("div");
-            const imgId = document.createElement("img");
-            const deleteButton = document.createElement("button");
-          
+greatMovies.forEach((movie, index) => {
+    const favMovieBox = document.createElement("div");
+    const imgId = document.createElement("img");
+    const deleteButton = document.createElement("button");
 
-            imgId.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`; 
-            imgId.alt= `${movie.title}`;
-            favMovieBox.setAttribute("class","movieBox");
-            deleteButton.innerText = "Delete from my toprated"
+    imgId.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`; 
+    imgId.alt = `${movie.title}`;
+    favMovieBox.setAttribute("class", "movieBox");
+    deleteButton.innerText = "Delete from my toprated";
 
+    deleteButton.addEventListener("click", function () {
+        const updatedGreatMovies = JSON.parse(localStorage.getItem("greatMovies")) || [];
+        updatedGreatMovies.splice(index, 1); 
+        localStorage.setItem("greatMovies", JSON.stringify(updatedGreatMovies)); 
 
-            deleteButton.addEventListener("click", function () {
-                
-                const updatedGreatMovies = JSON.parse(localStorage.getItem('greatMovies')) || [];
-                updatedGreatMovies.splice(index, 1); 
-                localStorage.setItem('updatedGreatMovies', JSON.stringify(updatedGreatMovies)); 
-        
-                favMovieBox.remove(); 
-        });
-            greatMovieSection.appendChild(favMovieBox)
-            favMovieBox.appendChild(imgId)
-            favMovieBox.appendChild(deleteButton)
-           
-        });
-        watchLaterMovies.forEach((movie, index ) => {
-            const favMovieBox = document.createElement("div");
-            const imgId = document.createElement("img");
-            const deleteButton = document.createElement("button");
-           
+        favMovieBox.remove(); 
+    });
 
-            imgId.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`; 
-            imgId.alt= `${movie.title}`;
-            favMovieBox.setAttribute("class","movieBox");
-            deleteButton.innerText = "Delete from my nextwatch"
+    greatMovieSection.appendChild(favMovieBox);
+    favMovieBox.appendChild(imgId);
+    favMovieBox.appendChild(deleteButton);
+});
 
-            deleteButton.addEventListener("click", function () {
-                
-                const updatedWatchLaterMovies = JSON.parse(localStorage.getItem('watchLaterMovies')) || [];
-                updatedWatchLaterMovies.splice(index, 1); 
-                localStorage.setItem('watchLaterMovies', JSON.stringify(updatedWatchLaterMovies)); 
-        
-                favMovieBox.remove(); 
-            });
+watchLaterMovies.forEach((movie, index) => {
+    const favMovieBox = document.createElement("div");
+    const imgId = document.createElement("img");
+    const deleteButton = document.createElement("button");
 
+    imgId.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`; 
+    imgId.alt = `${movie.title}`;
+    favMovieBox.setAttribute("class", "movieBox");
+    deleteButton.innerText = "Delete from my nextwatch";
 
+    deleteButton.addEventListener("click", function () {
+        const updatedWatchLaterMovies = JSON.parse(localStorage.getItem("watchLaterMovies")) || [];
+        updatedWatchLaterMovies.splice(index, 1); 
+        localStorage.setItem("watchLaterMovies", JSON.stringify(updatedWatchLaterMovies)); 
 
-            watchLaterSection.appendChild(favMovieBox)
-            favMovieBox.appendChild(imgId)
-            favMovieBox.appendChild(deleteButton)
-            
-        });
+        favMovieBox.remove(); 
+    });
 
-
+    watchLaterSection.appendChild(favMovieBox);
+    favMovieBox.appendChild(imgId);
+    favMovieBox.appendChild(deleteButton);
+});
