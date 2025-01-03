@@ -43,7 +43,6 @@ async function fetchMovies(genre) {
         
         const data = await response.json();
         allMovies = data.results; 
-        console.log(data);
         return data.results; 
         
     } catch (err) {
@@ -191,5 +190,5 @@ async function fetchAllMovies() {
 renderAllMovies.addEventListener("click", fetchAllMovies);
 
 window.onload = function() {
-    document.getElementById("renderAll").click();
+    document.getElementById("actionButton").click();
 };
