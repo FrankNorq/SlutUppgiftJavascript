@@ -68,9 +68,10 @@ function createMovies(data) {
         const imgId = document.createElement("img");
         const scoreId = document.createElement("p");
         const viewMoreButton = document.createElement("button");
+        const localStorageButton = document.createElement("button");
         
         
-        
+        localStorageButton.innerText = "Add to favorites";
         viewMoreButton.innerText = "Read about the movie";
         imgId.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`; 
         imgId.alt= `${movie.title}`;
@@ -86,10 +87,37 @@ function createMovies(data) {
         
             modal.style.display = 'block'; 
         });
+        localStorageButton.addEventListener("click",function () {
+            const optionsBox = document.createElement("div");
+            const insaneButton = document.createElement("button");
+            const greatButton = document.createElement("button");
+            const watchLaterButton = document.createElement("button");
+
+            optionsBox.id = "optionBox";
+            insaneButton.innerText = "Insane movie 9+";
+            greatButton.innerText = "Great movie 8+";
+            watchLaterButton.innerText = "Watch later"
+            divBox.appendChild(optionsBox)
+            optionsBox.appendChild(insaneButton);
+            optionsBox.appendChild(greatButton);
+            optionsBox.appendChild(watchLaterButton)
+            
+            insaneButton.addEventListener("click",function () {
+                
+            })
+            greatButton.addEventListener("click",function () {
+                
+            })
+            watchLaterButton.addEventListener("click",function () {
+                
+            })
+
+        })
         
         divBox.appendChild(scoreId);
         divBox.appendChild(imgId);
         divBox.appendChild(viewMoreButton);
+        divBox.appendChild(localStorageButton);
         moviesBox.appendChild(divBox);
     });
 }
