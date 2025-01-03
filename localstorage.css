@@ -1,0 +1,63 @@
+/* main  */
+#localStorageMovies {
+    display: flex;
+    flex-direction: column;
+    color: azure;
+    align-items: center;
+    font-size: x-large; 
+    font-weight: bold;
+}
+
+main section div {
+    display: flex;
+    gap: 40px;
+    width: 100%;
+    justify-content: center;
+}
+
+.movieBox {
+    display: flex; 
+    flex-direction: column;
+    gap: 10px; 
+    justify-content: center;
+    align-items: center;
+    width: fit-content; 
+}
+
+.movieBox div {
+    text-align: center; 
+}
+
+.movieBox img {
+    max-width: 100%; 
+    height: auto; 
+}
+
+.movieBox p {
+    color: white;
+}
+
+
+@media (max-width: 768px) {
+    #localStorageMovies {
+        font-size: large; 
+    }
+
+    main section div {
+        flex-wrap: wrap; 
+        gap: 20px; 
+    }
+}
+
+
+@media (max-width: 480px) {
+    #localStorageMovies {
+        font-size: medium; 
+    }
+
+    main section div {
+        flex-direction: column; 
+        align-items: center; 
+        gap: 10px; 
+    }
+}
