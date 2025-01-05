@@ -107,6 +107,7 @@ function createMovies(data) {
         });
 
         localStorageButton.addEventListener("click", function () {
+            localStorageButton.disabled = true;
             const optionsBox = document.createElement("div");
             const insaneButton = document.createElement("button");
             const greatButton = document.createElement("button");
@@ -116,6 +117,7 @@ function createMovies(data) {
             insaneButton.innerText = "Insane movie 9+";
             greatButton.innerText = "Great movie 8+";
             watchLaterButton.innerText = "Watch later";
+
             divBox.appendChild(optionsBox);
             optionsBox.appendChild(insaneButton);
             optionsBox.appendChild(greatButton);
@@ -126,6 +128,7 @@ function createMovies(data) {
                 savedMovies.push(movie);
                 localStorage.setItem("insaneMovies", JSON.stringify(savedMovies));
                 optionsBox.remove();
+                localStorageButton.remove()
             });
 
             greatButton.addEventListener("click", function () {
@@ -133,6 +136,7 @@ function createMovies(data) {
                 savedMovies.push(movie);
                 localStorage.setItem("greatMovies", JSON.stringify(savedMovies));
                 optionsBox.remove();
+                localStorageButton.remove()
             });
 
             watchLaterButton.addEventListener("click", function () {
@@ -140,6 +144,7 @@ function createMovies(data) {
                 savedMovies.push(movie);
                 localStorage.setItem("watchLaterMovies", JSON.stringify(savedMovies));
                 optionsBox.remove();
+                localStorageButton.remove()
             });
         });
         
@@ -169,7 +174,9 @@ searchInput.addEventListener("input", function() {
             movieElement.style.display = "none"; 
         }
     });
+    console.log(movieElements.length);
 });
+
 
 async function fetchAllMovies() {
     const genrePromises = Object.keys(genreMap).map(genre => fetchMovies(genre));
@@ -187,7 +194,9 @@ async function fetchAllMovies() {
     }
 }
 
-renderAllMovies.addEventListener("click", fetchAllMovies);
+renderAllMovies.addEventListener("click", function () {
+    fetchAllMovies()
+});
 
 window.onload = function() {
     document.getElementById("actionButton").click();
