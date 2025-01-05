@@ -56,7 +56,7 @@ async function fetchAllMovies() {
     try {
         const results = await Promise.all(genrePromises);
         const allMovies = results.flat();
-
+// filtrera bort dubletter
         const uniqueMovies = Array.from(new Set(allMovies.map(movie => movie.id)))
             .map(id => allMovies.find(movie => movie.id === id));
 
@@ -194,7 +194,12 @@ searchInput.addEventListener("input", function() {
             movieElement.style.display = "none"; 
         }
     });
-    countDisplay.textContent = `${matchCount} Movie matched the search.`;
+    if (matchCount > 1) {
+        countDisplay.textContent = `${matchCount} Movies matched the search.`;
+        
+    } else {
+        countDisplay.textContent = `${matchCount} Movie matched the search.`;
+    }
 });
 
 
