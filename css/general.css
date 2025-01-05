@@ -53,6 +53,9 @@ li {
     margin: 60px; 
     display: inline;
 }
+a:hover {
+    color: #28a745;
+}
 
 .profilePic {
     width: 300px;
@@ -61,6 +64,31 @@ li {
     align-items: center;
     border-radius: 30%
     
+}
+@media (max-width: 890px) {
+    .profilePic {
+display: none;
+        
+    }
+}
+@media (max-width: 768px) {
+    li {
+        margin: 30px; 
+        
+    }
+    header .logo {
+        width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    li {
+        margin: 10px; 
+    }
+    header .logo {
+        width: 150px;
+        height: 100px;
+    }
 }
 /* main  */
 /* general buttons  */

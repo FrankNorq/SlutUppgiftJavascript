@@ -43,6 +43,10 @@
 #genreButtons button:hover {
     background-color: #350236; 
 }
+#matchCount {
+    color: #f5eded;
+    text-align: center;
+}
 /* element jag skapar  */
 .boxNextWatch {
     display: flex; 

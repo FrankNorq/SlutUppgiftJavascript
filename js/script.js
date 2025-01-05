@@ -5,9 +5,10 @@ const searchButton = document.querySelector(".searchButton");
 const modal = document.getElementById("movieModal");
 const closeButton = document.querySelector(".close-button");
 const renderAllMovies = document.getElementById("renderAll");
+const countDisplay = document.getElementById("matchCount")
 const apiKey = "949ceccc803d4d64aa682d6ef42b2b36";
 let allMovies = [];
-const genreMap = {
+const genreFolder = {
     action: 28,
     adventure: 12,
     animation: 16,
@@ -27,11 +28,11 @@ const genreMap = {
 };
 
 async function fetchMovies(genre) {
-    const genreId = genreMap[genre]; 
+    const genreId = genreFolder[genre]; 
     
     if (!genreId) {
-        console.error("Genre not found:", genre);
-        return; 
+        // console.error("Genre not found:", genre);
+        return []; 
     }
     
     try {
@@ -49,6 +50,21 @@ async function fetchMovies(genre) {
         handleErrorWithFetching(err);
     }
 }
+async function fetchAllMovies() {
+    const genrePromises = Object.keys(genreFolder).map(genre => fetchMovies(genre));
+
+    try {
+        const results = await Promise.all(genrePromises);
+        const allMovies = results.flat();
+
+        const uniqueMovies = Array.from(new Set(allMovies.map(movie => movie.id)))
+            .map(id => allMovies.find(movie => movie.id === id));
+
+        createMovies(uniqueMovies);
+    } catch (err) {
+        handleErrorWithFetching(err);
+    }
+}
 
 genreButtons.forEach(button => {
     button.addEventListener("click", function () {
@@ -56,6 +72,7 @@ genreButtons.forEach(button => {
         fetchMovies(genre)
             .then((data) => {
                 createMovies(data);
+
             });
     });
 });
@@ -160,39 +177,27 @@ closeButton.addEventListener("click", () => {
     modal.style.display = "none";
 });
 
+
 searchInput.addEventListener("input", function() {
     const filterText = searchInput.value.toLowerCase(); 
     const movieElements = moviesBox.children; 
+    let matchCount = 0;
 
     Array.from(movieElements).forEach((movieElement) => {
         const imgElement = movieElement.querySelector("img"); 
         const movieAltText = imgElement ? imgElement.alt.toLowerCase() : ""; 
 
         if (movieAltText.includes(filterText)) {
-            movieElement.style.display = ""; 
+            movieElement.style.display = "";
+            matchCount++;
         } else {
             movieElement.style.display = "none"; 
         }
     });
-    console.log(movieElements.length);
+    countDisplay.textContent = `${matchCount} Movie matched the search.`;
 });
 
 
-async function fetchAllMovies() {
-    const genrePromises = Object.keys(genreMap).map(genre => fetchMovies(genre));
-
-    try {
-        const results = await Promise.all(genrePromises);
-        const allMovies = results.flat();
-
-        const uniqueMovies = Array.from(new Set(allMovies.map(movie => movie.id)))
-            .map(id => allMovies.find(movie => movie.id === id));
-
-        createMovies(uniqueMovies);
-    } catch (err) {
-        console.error("Error fetching all movies:", err);
-    }
-}
 
 renderAllMovies.addEventListener("click", function () {
     fetchAllMovies()
