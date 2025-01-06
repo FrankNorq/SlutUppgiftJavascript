@@ -48,6 +48,7 @@ detta är min parameter &with_genres=${genreId}
     
 Jag valde att hämta filmer till min hemsida med hjälp av movie-endpointen. För att göra detta skapade jag en genremap där jag inkluderade olika genre-ID:n som parametrar för att hämta olika typer av filmer.  
 
+Välkommen till min arcane inspirerade filmhemsida!! 
 Min hemsida är mycket användarvänlig. Du kan enkelt klicka på knappar för att upptäcka filmer inom olika teman. Om du är osäker på vad du vill se, finns det en knapp för att visa alla filmer. Har du redan en specifik film i åtanke, kan du söka direkt efter den.
 
 Du kan även skapa din egen topplista genom att spara och ge betyg till filmer du har sett, vilket gör det enkelt att rekommendera dem till dina vänner. Dessutom kan du spara filmer som du vill se vid ett senare tillfälle. För varje film finns det en knapp där du kan läsa mer om dess innehåll.
