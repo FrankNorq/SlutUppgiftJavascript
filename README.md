@@ -10,6 +10,7 @@ Klistra in den kopierade länken och döp projektet till valfritt namn.
 Öppna projektet i Visual Studio Code.
 Starta live-servern för att se det i din webbläsare.
 Figma-länk: Figma-skiss (Allt förutom prestanda över 90% enligt Lighthouse, vilket garanterar en snabb och responsiv användarupplevelse.)
+https://www.figma.com/design/Fa1idwcp9Q6Phyjl6kK17p/Filmsida?node-id=0-1&p=f&t=7bfcEG2u4HjyWqc7-0
 
 Tekniska aspekter:
 
