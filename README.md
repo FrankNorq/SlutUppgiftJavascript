@@ -21,7 +21,7 @@ API-användning:
 
 API: The Movie Database (TMDb)
 URL/Endpoint: https://api.themoviedb.org/3/discover/movie
-API-nyckel: 949ceccc803d4d64aa682d6ef42b2b36
+API-nyckel: 949cecccxxxxxxxxxxxxef42b2b36 hemlig
 Parameter: &with_genres=${genreId} (Exempel på genre-ID:n inkluderar: action: 28, adventure: 12, comedy: 35, osv.)
 Jag valde att hämta filmer till min hemsida med hjälp av movie-endpointen. Jag skapade en genremap där jag inkluderade olika genre-ID:n som parametrar för att hämta olika typer av filmer.
 
