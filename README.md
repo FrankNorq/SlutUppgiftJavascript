@@ -23,8 +23,11 @@ För säkerhetens skull använder jag HTTPS när jag gör API-förfrågningar, v
 När det kommer till UX/UI har jag skapat en design i Figma för att säkerställa en solid plan. Jag inkluderar alt-texter för att göra webbplatsen tillgänglig för fler användare. Färgvalen har hög kontrast för bättre läsbarhet, och jag har placerat menyn till höger för att underlätta användning för högerhänta, vilket är en majoritet av användarna.
 
 detta är mitt api https://api.themoviedb.org/3/
+
 detta är min endpoint discover/movie
+
 detta är min api 949ceccc803d4d64aa682d6ef42b2b36
+
 detta är min parameter &with_genres=${genreId}
     action: 28,
     adventure: 12,
@@ -42,7 +45,14 @@ detta är min parameter &with_genres=${genreId}
     thriller: 53,
     war: 10752,
     western: 37
+    
 Jag valde att hämta filmer till min hemsida med hjälp av movie-endpointen. För att göra detta skapade jag en genremap där jag inkluderade olika genre-ID:n som parametrar för att hämta olika typer av filmer.  
+
+Min hemsida är mycket användarvänlig. Du kan enkelt klicka på knappar för att upptäcka filmer inom olika teman. Om du är osäker på vad du vill se, finns det en knapp för att visa alla filmer. Har du redan en specifik film i åtanke, kan du söka direkt efter den.
+
+Du kan även skapa din egen topplista genom att spara och ge betyg till filmer du har sett, vilket gör det enkelt att rekommendera dem till dina vänner. Dessutom kan du spara filmer som du vill se vid ett senare tillfälle. För varje film finns det en knapp där du kan läsa mer om dess innehåll.
+
+Om du har några frågor, finns det ett kontaktformulär där du kan skicka in dina funderingar till oss på Couch Quest.
 
 
 
