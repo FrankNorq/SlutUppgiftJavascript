@@ -56,4 +56,11 @@ Du kan även skapa din egen topplista genom att spara och ge betyg till filmer d
 Om du har några frågor, finns det ett kontaktformulär där du kan skicka in dina funderingar till oss på Couch Quest.
 
 
+Mina viktiga commits,
+localstorage Done
+fetch function done.
+Errorhandeling done
+redone search function to work on all movies, had to look for them on alt tags and also make sure they dont show up more than one time since they exist in more than 1 catogory
+Redid the fetchfunction on buttons to make it easier to maintain
 
+Jag mergade promse.all, localstroage samt errorhandling in i dev men lite strul vart en ny dev och därifrån till main
