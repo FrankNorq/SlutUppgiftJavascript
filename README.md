@@ -13,7 +13,7 @@ Använd Visual Studio Code för att öppna den klonade mappen.
 Starta live-servern:
 Kör projektet med hjälp av live-servern för att se det i din webbläsare.
 
-Figma länk här under
+Figma länk här under(ALLT förutom performence över 90% på lighthouse)
 https://www.figma.com/design/Fa1idwcp9Q6Phyjl6kK17p/Filmsida?node-id=0-1&p=f&t=SMfYf5Jjsriv4oH4-0
 
 Jag har uppfyllt kraven för JSON genom att hämta data från API:et och konvertera den till JSON-format. Jag använder stringify och parse för att hantera data i localStorage.
