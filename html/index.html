@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/general.css">
+</head>
+<body>
+    <header>
+        <section class="menu">
+            <img  class="logo" src="/ImgFolder/Couch Quest.jpeg" alt="logo for the brand of the website">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home Page</a></li>
+                    <li><a href="localStorage.html">My Favorites</a></li>
+                </ul>
+            </nav>
+            <img class="profilePic" src="/ImgFolder/JInx pic.jpg" alt="a girl from arcane called jinx, chosen avatar for your profil">
+
+            
+        </section>
+        <section class="backdrop">
+            <img src="/ImgFolder/HeroPic1.jpg" alt="Hero Image">
+            <div class="hero-text">
+                <h1>Welcome to Couch Quest</h1>
+                <p>Are you a TV nerd who loves to binge-watch shows and movies? Do you want to share your thoughts and ratings with friends to help them discover their next favorite series? Look no further!</p>
+            </div>
+        </section>
+        </header>
+    <main>
+        <section>
+            <div class="searchContainer">
+                <input type="text" class="searchInput" placeholder="Filter movie...">
+                <button class="searchButton">Search</button>
+            </div>
+            
+                <div id="genreButtons">
+                    <button id="renderAll">All movies</button>
+                    <button id="actionButton" data-genre="action">Action</button>
+                    <button id="adventureButton" data-genre="adventure">Adventure</button>
+                    <button id="animationButton" data-genre="animation">Animation</button>
+                    <button id="comedyButton" data-genre="comedy">Comedy</button>
+                    <button id="crimeButton" data-genre="crime">Crime</button>
+                    <button id="documentaryButton" data-genre="documentary">Documentary</button>
+                    <button id="dramaButton" data-genre="drama">Drama</button>
+                    <button id="horrorButton" data-genre="horror">Horror</button>
+                    <button id="musicButton" data-genre="music">Music</button>
+                    <button id="mysteryButton" data-genre="mystery">Mystery</button>
+                    <button id="romanceButton" data-genre="romance">Romance</button>
+                    <button id="sciFiButton" data-genre="sciFi">Science Fiction</button>
+                    <button id="tvMovieButton" data-genre="tvMovie">TV Movie</button>
+                    <button id="thrillerButton" data-genre="thriller">Thriller</button>
+                    <button id="warButton" data-genre="war">War</button>
+                    <button id="westernButton" data-genre="western">Western</button>
+                </div>
+            <p id="matchCount"></p>
+            <div class="boxNextWatch"></div>
+            <div id="movieModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalOverview"></p>
+                    <p>Release Date: <span id="modalReleaseDate"></span></p>
+                    <p>Rating: <span id="modalRating"></span></p>
+                    <p>Popularity: <span id="modalPopularity"></span></p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+    <footer>
+        <div class="contact-container">
+            <h1>Contact</h1>
+            <form>
+                <input type="text" placeholder="Fill in your name" required>
+                <input type="email" placeholder="Fill in your e-mail" required>
+                <textarea placeholder="Write a message" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="ourVision">
+            <h3>Our Vision</h3>
+            <p>   At Couch Quest, we believe that movies are more than just entertainment; they are a shared experience that can spark conversations, create memories, and forge connections. Our vision for starting this movie site stems from a passion for storytelling and the joy of discovering new films together with friends.
+                
+                In today’s digital age, it’s easy to feel overwhelmed by the vast array of movies available. We wanted to create a space where movie lovers can come together to rate, review, and discuss films they love. Our platform allows you to not only share your thoughts but also curate your own personalized list of favorites. This way, you can recommend movies to your friends, ensuring they never miss out on hidden gems or blockbuster hits.
+                
+                We understand that everyone has different tastes, and what resonates with one person may not with another. That’s why we designed Couch Quest to be a community-driven platform where users can express their opinions and engage with others. You can discover what your friends are watching, learn about their ratings, and get inspired by their recommendations!</p>
+        </div>
+        <div class="footerBrand">
+            <img  class="logo" src="/ImgFolder/Couch Quest.jpeg" alt="logo for the brand of the website">
+            <h3>Other Information</h3>
+            <p>Adress: FalconStreet 1337</p>
+            <p>City: New York</p>
+        </div>
+    </footer>
+ <script src="../../js/script.js"></script>
+</body>
+</html>
