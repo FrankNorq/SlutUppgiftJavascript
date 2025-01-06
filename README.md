@@ -25,6 +25,8 @@ API-nyckel: 949cecccxxxxxxxxxxxxef42b2b36 hemlig
 Parameter: &with_genres=${genreId} (Exempel på genre-ID:n inkluderar: action: 28, adventure: 12, comedy: 35, osv.)
 Jag valde att hämta filmer till min hemsida med hjälp av movie-endpointen. Jag skapade en genremap där jag inkluderade olika genre-ID:n som parametrar för att hämta olika typer av filmer.
 
+När det kommer till UX/UI har jag skapat en design i Figma för att säkerställa en solid plan. Jag inkluderar alt-texter för att göra webbplatsen tillgänglig för fler användare. Färgvalen har hög kontrast för bättre läsbarhet, och jag har placerat menyn till höger för att underlätta användning för högerhänta, vilket är en majoritet av användarna.
+
 Navigering och användning av applikationen:
 
 Min hemsida är användarvänlig. Du kan enkelt klicka på knappar för att upptäcka filmer inom olika teman. Om du är osäker på vad du vill se, finns det en knapp för att visa alla filmer. Har du en specifik film i åtanke, kan du söka direkt efter den.
